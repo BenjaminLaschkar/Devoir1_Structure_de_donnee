@@ -1,29 +1,39 @@
 #include "stdafx.h"
 #include "Pioche.h"
-#include <time.h>
-#include <iostream>
-#include "Carte.h"
-#include "Pile.h"
-#include "Pile.cpp" //Afin d'éviter le LNK2019 il faut compiler les librairie utilisant un template : https://stackoverflow.com/questions/3705740/c-lnk2019-error-unresolved-external-symbol-template-classs-constructor-and
 
-using namespace std;
 
-Pioche::Pioche(int nombre_de_carte)
+Pioche::Pioche(int nombre_de_carte_par_joueur)
 {
-
+	if (nombre_de_carte_par_joueur > 50) {
+		throw("erreur : nombre de carte > 50");
+	}
+	this->nombre_de_carte_par_joueur = nombre_de_carte_par_joueur;
 	srand(time(NULL));
-
-	Pile<Carte> pioche = Pile<Carte>(nombre_de_carte);
-
-	for (int i = 0; i < nombre_de_carte; i++) {
+	pioche = Pile<Carte>();
+	for (int i = 0; i < MAX_CARTE; i++) {
 		Carte carte  = Carte();
 		pioche.empiler(carte);
 	}
-	int a = 1;
-	
 }
 
 
 Pioche::~Pioche()
 {
+}
+
+
+tuple<Pile<Carte>, Pile<Carte>> Pioche::Distribuer()
+{
+	Pile<Carte> deck_1 = Pile<Carte>(this->nombre_de_carte_par_joueur);
+	Pile<Carte> deck_2 = Pile<Carte>(this->nombre_de_carte_par_joueur);
+
+	for (int i = 0; i < this->nombre_de_carte_par_joueur; i++) {
+		deck_1.empiler(pioche.consulte_sommet());
+		pioche.depiler();
+		deck_2.empiler(pioche.consulte_sommet());
+		pioche.depiler();
+	}
+	
+	tuple<Pile<Carte>, Pile<Carte>> decks(deck_1, deck_2);
+	return decks;
 }

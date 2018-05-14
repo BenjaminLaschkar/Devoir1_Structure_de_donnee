@@ -14,7 +14,7 @@ Pile<T>::Pile(int max) throw (bad_alloc)
 template<typename T>
 Pile<T>::Pile(const Pile & p)
 {
-	tab = new X[p.tailleMax];
+	tab = new T[p.tailleMax];
 	tailleMax = p.tailleMax;
 	for (int i = 0; i< tailleMax; i += 1)
 		tab[i] = p.tab[i];
@@ -63,7 +63,7 @@ int Pile<T>::taille() const
 template<typename T>
 const T & Pile<T>::consulte_sommet() const
 {
-	return T();
+	return tab[sommet];
 }
 
 template<typename T>
