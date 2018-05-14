@@ -57,13 +57,13 @@ bool Pile<T>::estVide() const
 template<typename T>
 int Pile<T>::taille() const
 {
-	return taille;
+	return tailleMax;
 }
 
 template<typename T>
 const T & Pile<T>::consulte_sommet() const
 {
-	return tab[sommet];
+	return T();
 }
 
 template<typename T>
