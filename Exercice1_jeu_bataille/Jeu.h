@@ -12,5 +12,6 @@ public:
 	void CalculScore(Joueur &J);
 	Joueur J1;
 	Joueur J2;
+	bool log = false;
 };
 
