@@ -13,7 +13,7 @@ public:
 	//Sélecteurs
 	bool estVide()const;
 	int taille()const;
-	const T& consulte_sommet() const; // consulte l’élément au sommet
+	const T consulte_sommet() const; // consulte l’élément au sommet
 	//surcharge d'opérateurs
 	const Pile<T>& operator = (const Pile<T>& p);
 	template <typename U> friend std::ostream& operator<<

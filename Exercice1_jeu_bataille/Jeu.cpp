@@ -18,6 +18,7 @@ void Jeu::DemarrerBataille()
 	while (!(J1.deck.estVide()) && !(J2.deck.estVide())) {
 		
 		if (J1.deck.consulte_sommet().puissance > J2.deck.consulte_sommet().puissance) {
+
 			J1.defausse.empiler(J1.deck.depiler());
 			J1.defausse.empiler(J2.deck.depiler());
 		}

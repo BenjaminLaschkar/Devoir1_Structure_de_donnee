@@ -9,7 +9,13 @@ Carte::Carte()
 	this->bonus = rand() % 4 + 1;
 }
 
+Carte::Carte(const Carte& carte) {
+	this->puissance = carte.puissance;
+	this->couleur = carte.couleur;
+	this->bonus = carte.bonus;
+}
 
 Carte::~Carte()
 {
 }
+	

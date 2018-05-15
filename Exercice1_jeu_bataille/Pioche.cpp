@@ -12,6 +12,7 @@ Pioche::Pioche(int nombre_de_carte_par_joueur)
 	pioche = Pile<Carte>();
 	for (int i = 0; i < MAX_CARTE; i++) {
 		Carte carte  = Carte();
+		
 		pioche.empiler(carte);
 	}
 }
@@ -31,7 +32,6 @@ tuple<Pile<Carte>, Pile<Carte>> Pioche::Distribuer()
 		deck_1.empiler(pioche.depiler());
 		deck_2.empiler(pioche.depiler());
 	}
-	
 	tuple<Pile<Carte>, Pile<Carte>> decks(deck_1, deck_2);
 	return decks;
 }

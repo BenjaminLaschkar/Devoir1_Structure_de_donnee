@@ -61,9 +61,9 @@ int Pile<T>::taille() const
 }
 
 template<typename T>
-const T & Pile<T>::consulte_sommet() const
+const T  Pile<T>::consulte_sommet() const
 {
-	return T();
+	return tab[sommet];
 }
 
 template<typename T>
