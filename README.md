@@ -6,6 +6,7 @@ Auteurs : <br><br>
 Clément RENDU <br>
 Sylvain PRYFER <br>
 Laureen GALA <br>
+Mehdi FAKIHANI <br>
 Benjamin LASCHKAR
 
 Fait à l'UQAC, le 12/05/2018 
