@@ -9,6 +9,6 @@ class Utilities {
 		static int getRandValue(int inf, int sup);
 		static void trierCarton(Piece *tableau_carton[5]);
 
-		static Piece GenererCarton(int nbPiecesMax);
+		static Piece genererCarton(int nbPiecesMax);
 };
 
