@@ -9,21 +9,16 @@ using namespace std;
 MA::MA()
 {
 }
-<<<<<<< HEAD
-MA::~MA()
-{
-}
-=======
-
 
 MA::~MA()
 {
 }
+
 bool MA::TraiterPiece(Tete & t)
 {
 	return false;
 }
->>>>>>> 14cba3b9fd9096c2554990e05be00d419b862d06
+
 bool MA::TraiterPiece(Axe &a)
 {
 	cout << "Debut de traitement d'un Axe \n";
@@ -48,22 +43,12 @@ bool MA::TraiterPiece(Axe &a)
 	cout << "Fin de traitement d'une tête";
 	return true;
 }
-<<<<<<< HEAD
-bool MA::TraiterPiece(Tete & t)
-{
-	return false;
-}
-=======
 
->>>>>>> 14cba3b9fd9096c2554990e05be00d419b862d06
 bool MA::TraiterPiece(Jupe & j)
 {
 	return false;
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 14cba3b9fd9096c2554990e05be00d419b862d06
 Piston * MA::TraiterPiece(Tete & t, Jupe & j, Axe & a)
 {
 	return nullptr;

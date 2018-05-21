@@ -11,7 +11,7 @@ MP::MP()
 MP::~MP()
 {
 }
-
+/*
 Piston* MP::TraiterPiece(Tete &t, Jupe &j, Axe &a)
 {
 	Piston* p = new Piston();
@@ -50,4 +50,4 @@ bool MP::TraiterPiece(Axe & a)
 bool MP::TraiterPiece(Jupe & j)
 {
 	return false;
-}
+}*/
