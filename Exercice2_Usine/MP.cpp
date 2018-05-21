@@ -12,7 +12,7 @@ MP::~MP()
 {
 }
 
-Piston* MP::TraiterPiece(Tete t, Jupe j, Axe a)
+Piston* MP::TraiterPiece(Tete &t, Jupe &j, Axe &a)
 {
 	Piston* p = new Piston();
 	//TODO: Définir la logique des pièces
@@ -20,8 +20,6 @@ Piston* MP::TraiterPiece(Tete t, Jupe j, Axe a)
 		//Toutes les pièces doivent êtres usinées
 		return p;
 	}
-
-	
 
 	//TODO: 1 - Temps d'attente (en minute)
 	double tpsAttente = 1;
@@ -33,11 +31,23 @@ Piston* MP::TraiterPiece(Tete t, Jupe j, Axe a)
 	}
 	Sleep(tpsAttente * 1000);
 
-	//2 - Traitement de la pièce
+	//TODO: 3 - Traitement de la pièce
 	p->setEstTraiter(true);
 
-
-	//TODO: 3 - 
-
 	return p;
+}
+
+bool MP::TraiterPiece(Tete & t)
+{
+	return false;
+}
+
+bool MP::TraiterPiece(Axe & a)
+{
+	return false;
+}
+
+bool MP::TraiterPiece(Jupe & j)
+{
+	return false;
 }

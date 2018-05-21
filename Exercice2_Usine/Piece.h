@@ -1,6 +1,6 @@
 #pragma once
-class Piece
-{
+
+class Piece {
 private:
 	bool estTraiter;
 public:
@@ -8,6 +8,8 @@ public:
 	~Piece();
 	bool getEstTraiter();
 	void setEstTraiter(bool newValue);
-
+	virtual bool estTete() const = 0;
+	virtual bool estAxe() const = 0;
+	virtual bool estJupe() const = 0;
 };
 
