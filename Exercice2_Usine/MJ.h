@@ -1,14 +1,14 @@
 #pragma once
 #include "Machine.h"
-#include "Tete.h"
+#include "Jupe.h"
 
-class MT :
+class MJ :
 	public Machine
 {
 public:
-	MT();
-	~MT();
-	bool TraiterPiece(Tete &t) override; 
+	MJ();
+	~MJ();
+	bool TraiterPiece(Tete &t) override;
 	bool TraiterPiece(Axe &a) override;
 	bool TraiterPiece(Jupe &j) override;
 	Piston* TraiterPiece(Tete &t, Jupe &j, Axe &a) override;
