@@ -16,8 +16,8 @@ Utilities::Utilities() { }
 Utilities::~Utilities() { }
 
 int Utilities::getRandValue(int inf, int sup) {
-	//ceil(nombre_aleatoire * 1.0 / RAND_MAX)*(borne_maximale-borne_minimale)+borne_minimale)
-	return ceil(rand() * 1.0 / RAND_MAX) * (sup - inf) + inf;
+	int randValue = rand() % sup + inf;
+	return randValue;
 }
 
 void  Utilities::trierCarton(Piece *tableau_carton[5]) {
@@ -36,4 +36,17 @@ void  Utilities::trierCarton(Piece *tableau_carton[5]) {
 			cout << "JUPE\n";
 		}
 	}
+}
+
+Piece Utilities::GenererCarton(int nbPiecesMax) {
+	Piece *tableauCarton = new Piece[getRandValue(1, nbPiecesMax)];
+
+	for (int i = 0; i < nbPiecesMax; i++) {
+		int piece = getRandValue(1, 3);
+		if (piece = 1) { tableauCarton[i] = Tete(); }
+		if (piece = 2) { tableauCarton[i] = Axe(); }
+		if (piece = 3) { tableauCarton[i] = Jupe(); }
+	}
+
+	return (tableauCarton);
 }
