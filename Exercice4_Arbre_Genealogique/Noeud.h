@@ -5,11 +5,22 @@ template <typename T>
 class Noeud
 {
 public:
-	Noeud(Noeud &enfant);
+	Noeud(T* data);
 	~Noeud();
+
+	void SetParentGauche(Noeud* parent_gauche);
+	void SetParentDroit(Noeud* parent_droit);
+	void SetEnfant(Noeud* enfant);
+
+	Noeud<T> * getParentGauche();
+	Noeud<T> * getParentDroit();
+	Noeud<T> * getEnfant();
+
+	T * data;
+
 private:
-	Noeud * parent_gauche;
-	Noeud *	parent_droit;
-	Noeud * enfant;
+	Noeud<T> * parent_gauche;
+	Noeud<T> *	parent_droit;
+	Noeud<T> * enfant;
 };
 
