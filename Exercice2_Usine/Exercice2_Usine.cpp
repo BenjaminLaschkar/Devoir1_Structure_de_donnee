@@ -20,15 +20,37 @@ using namespace std;
 
 int main() {
 	srand(time(NULL));
-	int nbPiecesMax = 300;
+	int nbPiecesMax = 5;
 
-	//Piece *tableau_carton[5] = { new Tete(), new Axe(), new Tete(), new Jupe() };
-	//Utilities::trierCarton(tableau_carton);
+	vector<Piece*> carton;
 
-	cout << "\n\n On fait des tests et on s'amuse \n\n";
+	//Utilities::genererCarton(carton, nbPiecesMax);
 
-	//Utilities::genererCarton(nbPiecesMax);
-	//Utilities::trierCarton(tableau_carton2);
+	/* WORKIKNG */
+	
+		// Ajout pièce
+		carton.push_back(new Axe());
+		carton.push_back(new Jupe());
+		carton.push_back(new Axe());
+		carton.push_back(new Tete());
+		carton.push_back(new Axe());
+	
+		for (int i = 0; i<carton.size(); ++i) {
+			
+			cout << carton[i];
+			cout << "\n";
+			
+			if (carton[i]->estTete() == true) { cout << "Tete\n"; }
+			if (carton[i]->estAxe()  == true) { cout << "Axe\n";  }
+			if (carton[i]->estJupe() == true) { cout << "Jupe\n"; }
+		}
+	
+		// Supprime le précédent carton
+		for (int i = 0; i<carton.size(); ++i) {
+			delete carton[i];  //On libère la i-ème case mémoire allouée
+			carton[i] = 0;  //On met le pointeur à 0 pour éviter les soucis
+		}
+	
 
 	// Pause pour voir le resultat
 	getchar();
