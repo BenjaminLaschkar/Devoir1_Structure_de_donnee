@@ -22,9 +22,11 @@ public:
 	//Renvoie vrai si le mot existe, faux sinon
 	bool chercherMot(std::string const& mot) const;
 
+	bool estVide() const;
+
 private:
-	char lettre;
-	bool endOfWord;
-	std::unique_ptr<Dictionnaire> suite;
-	std::unique_ptr<Dictionnaire> alternative;
+	char lettre = 0;
+	bool endOfWord = false;
+	std::unique_ptr<Dictionnaire> suite = nullptr;
+	std::unique_ptr<Dictionnaire> alternative = nullptr;
 };
