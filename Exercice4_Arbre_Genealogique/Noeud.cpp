@@ -31,20 +31,20 @@ void Noeud<T>::SetEnfant(Noeud<T> * enfant)
 }
 
 template<typename T>
-Noeud<T> * Noeud<T>::getParentGauche()
+Noeud<T> & Noeud<T>::getParentGauche()
 {
-	return this->parent_gauche;
+	return *this->parent_gauche;
 }
 
 template<typename T>
-Noeud<T> *  Noeud<T>::getParentDroit()
+Noeud<T> &  Noeud<T>::getParentDroit()
 {
-	return this->parent_droit;
+	return *this->parent_droit;
 }
 
 template<typename T>
-Noeud<T> *  Noeud<T>::getEnfant()
+Noeud<T> &  Noeud<T>::getEnfant()
 {
-	return this->enfant;
+	return * this->enfant;
 }
 

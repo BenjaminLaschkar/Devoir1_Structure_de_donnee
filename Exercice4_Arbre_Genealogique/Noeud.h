@@ -12,15 +12,17 @@ public:
 	void SetParentDroit(Noeud* parent_droit);
 	void SetEnfant(Noeud* enfant);
 
-	Noeud<T> * getParentGauche();
-	Noeud<T> * getParentDroit();
-	Noeud<T> * getEnfant();
+	Noeud<T> & getParentGauche();
+	Noeud<T> & getParentDroit();
+	Noeud<T> & getEnfant();
 
 	T * data;
+	bool marquer;
 
 private:
-	Noeud<T> * parent_gauche;
-	Noeud<T> *	parent_droit;
-	Noeud<T> * enfant;
+	Noeud<T> * parent_gauche = nullptr;
+	Noeud<T> * parent_droit = nullptr;
+	Noeud<T> * enfant = nullptr;
+	
 };
 

@@ -5,12 +5,10 @@
 class Arbre
 {
 public:
-	Arbre(Noeud<Personne> racine);
+	Arbre(Personne personne_racine);
 	~Arbre();
-	void ArbreAscendant();
+	void ArbreAscendant(Noeud<Personne> &actual_node);
 	void ArbreDescendant();
-
-private:
-	Noeud<Personne> racine = Noeud<Personne>(nullptr);
+	Noeud<Personne> noeud_racine = nullptr;
 };
 
