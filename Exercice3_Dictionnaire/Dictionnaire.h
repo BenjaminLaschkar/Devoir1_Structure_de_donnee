@@ -9,6 +9,9 @@
 class Dictionnaire
 {
 public:
+	//TODO : Créer un constructeur qui prend une liste d'intialisation en paramètre afin de pouvoir écrire :
+	//       Dictionnaire dico = {"motUn","motDeux","motTrois","motQuatre"...};
+
 	//Ajoute le mot au dictionnaire. Le convertit en majuscule si ce n'est pas déjà fait.
 	Dictionnaire& ajouterMot(std::string const& mot);
 
