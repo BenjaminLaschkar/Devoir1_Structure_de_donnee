@@ -1,6 +1,5 @@
 #include "Dictionnaire.h"
 
-
 Dictionnaire & Dictionnaire::ajouterMot(std::string const & mot)
 {
 	if (mot.length() == 1)
@@ -14,20 +13,22 @@ Dictionnaire & Dictionnaire::ajouterMot(std::string const & mot)
 		else if (mot[0] == lettre)
 			endOfWord = true; 
 
-		//Il manque le cas ou lettre > mot[0] pour conserver l'ordre lexico
+		else if (lettre > mot[0])
+		{
+			auto nouveauNoeud= std::unique_ptr<Dictionnaire>(new Dictionnaire()); //TODO : Une chose intéressante serait d'écrire un move constructor pour simplifier le code
+			nouveauNoeud->lettre = lettre;
+			nouveauNoeud->suite = std::move(suite);
+			nouveauNoeud->alternative = std::move(alternative);
+			
+			lettre = mot[0];
+			alternative = std::move(nouveauNoeud);
+			endOfWord = true;
+		}
 
 		else if (alternative == nullptr)
 		{
 			alternative = std::unique_ptr<Dictionnaire>(new Dictionnaire());
 			alternative->ajouterMot(mot);
-		}
-
-		else if (alternative->lettre > mot[0])
-		{
-			std::unique_ptr<Dictionnaire> nouveauNoeud = std::unique_ptr<Dictionnaire>(new Dictionnaire());
-			nouveauNoeud->ajouterMot(mot);
-			nouveauNoeud->alternative = std::move(alternative);
-			alternative = std::move(nouveauNoeud);
 		}
 
 		else
@@ -42,10 +43,26 @@ Dictionnaire & Dictionnaire::ajouterMot(std::string const & mot)
 			suite = std::unique_ptr<Dictionnaire>(new Dictionnaire());
 			suite->ajouterMot(mot.substr(1, mot.length() - 1));
 		}
-		else if (mot[0] == lettre)
-			suite->ajouterMot(mot.substr(1, mot.length() - 1));
 
-		//Il manque le cas ou lettre > mot[0] pour conserver l'ordre lexico
+		else if (mot[0] == lettre)
+		{
+			if (suite == nullptr)
+				suite = std::unique_ptr<Dictionnaire>(new Dictionnaire());
+			suite->ajouterMot(mot.substr(1, mot.length() - 1));
+		}
+
+		else if (lettre > mot[0])
+		{
+			auto nouveauNoeud = std::unique_ptr<Dictionnaire>(new Dictionnaire());
+			nouveauNoeud->lettre = lettre;
+			nouveauNoeud->suite = std::move(suite);
+			nouveauNoeud->alternative = std::move(alternative);
+
+			lettre = mot[0];
+			alternative = std::move(nouveauNoeud);
+			suite = std::unique_ptr<Dictionnaire>(new Dictionnaire());
+			suite->ajouterMot(mot.substr(1, mot.length() - 1));
+		}
 
 		else if (alternative == nullptr)
 		{
@@ -53,18 +70,11 @@ Dictionnaire & Dictionnaire::ajouterMot(std::string const & mot)
 			alternative->ajouterMot(mot);
 		}
 
-		else if (alternative->lettre > mot[0])
-		{
-			auto nouveauNoeud = std::unique_ptr<Dictionnaire>(new Dictionnaire());
-			nouveauNoeud->ajouterMot(mot);
-			nouveauNoeud->alternative = std::move(alternative);
-			alternative = std::move(nouveauNoeud);
-		}
 		else
 			alternative->ajouterMot(mot);
 	}
 
-	return *this;
+	return *this; //Quand toutes les opérations sont finies, on peut renvoyer l'arbre modifié
 }
 
 bool Dictionnaire::chercherMot(std::string const & mot) const
@@ -78,8 +88,8 @@ bool Dictionnaire::chercherMot(std::string const & mot) const
 		if (mot[0] == lettre && suite != nullptr)
 			return suite->chercherMot(mot.substr(1, mot.length() - 1));
 
-		else if (mot[0] != lettre && alternative != nullptr) //TODO : si on conserve l'ordre lexicographique, on devrait pouvoir remplacer mot[0] != lettre par mot[0] > lettre,
-			return alternative->chercherMot(mot);			 //       ce qui permettrait de sortir de la recherche beaucoup plus tôt
+		else if (mot[0] != lettre && alternative != nullptr) //TODO : si on conserve l'ordre lexicographique, on devrait pouvoir remplacer mot[0] != lettre
+			return alternative->chercherMot(mot);			 //       par mot[0] > lettre, ce qui permettrait de sortir de la recherche beaucoup plus tôt
 
 		else
 			return false;
@@ -89,5 +99,5 @@ bool Dictionnaire::chercherMot(std::string const & mot) const
 
 bool Dictionnaire::estVide() const
 {
-	return lettre == 0;
+	return lettre == 0 && suite == nullptr && alternative == nullptr;
 }
