@@ -4,52 +4,32 @@
 #include "Windows.h";
 #include <iostream>;
 using namespace std;
-MP::MP()
-{
-}
 
+MP::MP() {}
+MP::~MP() {}
 
-MP::~MP()
-{
-}
-
-Piston* MP::TraiterPiece(Tete &t, Jupe &j, Axe &a)
-{
-	cout << "Debut du traitement d'un piston. \n";
+bool MP::TraiterPiece(Axe &a) { return false; }
+bool MP::TraiterPiece(Jupe &j) { return false; }
+bool MP::TraiterPiece(Tete &t) { return false; }
+Piston* MP::TraiterPiece(Axe &a, Jupe &j, Tete &t) {
+	cout << "Piston : Debut du traitement\n";
 	Piston* p = new Piston();
-	//TODO: Définir la logique des pièces
-	if (t.getEstTraiter() == false || j.getEstTraiter() == false || a.getEstTraiter() == false) {
-		//Toutes les pièces doivent êtres usinées
-		return p;
-	}
+	
+	// Condition de création
+	if (a.getEstTraiter() == false || j.getEstTraiter() == false || t.getEstTraiter() == false) { return p; }
 
-	//TODO: 1 - Temps d'attente (en minute)
+	// Temps d'attente (en minute)
 	double tpsAttente = 1;
 
-	//TODO: 2- Calculer temps suplémentaire en vérifiant si un nombre aléatoire entre 0 et 10 est compri entre 0 et 25 (25% de chance de tomber en panne)
+	// 25% de chance de tomber en panne
 	if (Utilities::getRandValue(0, 100) >= 0 && Utilities::getRandValue(0, 100) < 25) {
-		cout << "Machine MP en panne...";
+		cout << "         Machine MP en panne...\n";
 		tpsAttente = tpsAttente + Utilities::getRandValue(5, 10);
 	}
 	Sleep(tpsAttente * 1000);
 
-	//TODO: 3 - Traitement de la pièce
+	// Usinage de la pièce
 	p->setEstTraiter(true);
-	cout << "Fin du traitement d'un Piston. \n";
+	cout << "         Fin du traitement d'un Piston.\n";
 	return p;
-}
-
-bool MP::TraiterPiece(Tete & t)
-{
-	return false;
-}
-
-bool MP::TraiterPiece(Axe & a)
-{
-	return false;
-}
-
-bool MP::TraiterPiece(Jupe & j)
-{
-	return false;
 }

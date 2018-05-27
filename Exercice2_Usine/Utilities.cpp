@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "stdlib.h";
 #include "Axe.h";
-#include "Jupe.h";
 #include "File.h";
+#include "Jupe.h";
 #include "Math.h";
 #include "Tete.h";
 #include "Time.h";
@@ -10,16 +10,10 @@
 #include <iostream>;
 #include <typeinfo>;
 #include <vector>
-
 using namespace std;
-Utilities::Utilities()
-{
-}
 
-
-Utilities::~Utilities()
-{
-}
+Utilities::Utilities() {}
+Utilities::~Utilities() {}
 
 int Utilities::getRandValue(int inf, int sup) {
 	int randValue = (rand() % sup) + inf;
@@ -43,9 +37,9 @@ void Utilities::supprimerCarton(vector<Piece*> &carton) {
 	}
 }
 void Utilities::trieCarton(vector<Piece*> &carton, File<Axe> &fAxe, File<Jupe> &fJupe, File<Tete> &fTete) {
-	cout << "la taille du carton est de : \"";
+	cout << "La taille du carton est de : \"";
 	cout << carton.size();
-	cout << "\" elements\n";
+	cout << "\" elements\n" << endl;
 
 	for (int i = 0; i<carton.size(); ++i) {
 		if (carton[i]->estAxe() == true) {
@@ -64,5 +58,6 @@ void Utilities::trieCarton(vector<Piece*> &carton, File<Axe> &fAxe, File<Jupe> &
 			fTete.enfiler(t);
 		}
 	}
+	cout << "\n" << endl;
 }
 
