@@ -1,9 +1,9 @@
 #pragma once
 
 struct Node {
-	char data;
+	int data;
 	Node *precedent, *suivant;
-	Node(char d, Node *p, Node *s) : data(d), precedent(p), suivant(s) {
+	Node(int d, Node *p, Node *s) : data(d), precedent(p), suivant(s) {
 		if (p) precedent->suivant = this;
 		if (s) suivant->precedent = this;
 	}
@@ -11,22 +11,22 @@ struct Node {
 
 class ListeDoublementChainee {
 	public:
-		ListeDoublementChainee(char);
+		ListeDoublementChainee(int);
 		virtual ~ListeDoublementChainee();
 
 		Node *debut;	// Pointe vers le noeud actuel
-		char taille;
+		int taille;
 
 		bool estVide();
-		bool rechercheData(char);	// recherche dans la liste le char designe
+		bool rechercheData(int);	// recherche dans la liste le int designe
 		void afficher(bool);		// affiche la liste (true = depuis le debut, false = depuis la fin)
-		void ajouterData(char);
+		void ajouterData(int);
 		void ajouterPrecedent(Node*);
 		void ajouterSuivant(Node*);
-		void insertNodeApres(char);	// insert noeud apres debut
-		void insertNodeAvant(char);	// insert noeud avant debut
-		void insertNodeApresData(char, Node*);	// insert apres un noeud specifique
-		void insertNodeAvantData(char, Node*);	// insert avant un noeud specifique
-		void supprimerData(char, bool);
+		void insertNodeApres(int);	// insert noeud apres debut
+		void insertNodeAvant(int);	// insert noeud avant debut
+		void insertNodeApresData(int, Node*);	// insert apres un noeud specifique
+		void insertNodeAvantData(int, Node*);	// insert avant un noeud specifique
+		void supprimerData(int, bool);
 };
 

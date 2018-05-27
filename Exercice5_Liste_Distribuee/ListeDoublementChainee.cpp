@@ -4,7 +4,7 @@
 
 using namespace std;
 
-ListeDoublementChainee::ListeDoublementChainee(char d) {
+ListeDoublementChainee::ListeDoublementChainee(int d) {
 	debut = new Node(d, NULL, NULL);
 	debut->suivant = debut->precedent = debut;
 	taille = 1;
@@ -23,7 +23,7 @@ ListeDoublementChainee::~ListeDoublementChainee() {
 }
 
 bool ListeDoublementChainee::estVide() { return (this->taille == 0); }
-bool ListeDoublementChainee::rechercheData(char cherche) {
+bool ListeDoublementChainee::rechercheData(int cherche) {
 	int compteur = 0;
 	Node *tmp = debut;
 
@@ -45,33 +45,33 @@ void ListeDoublementChainee::afficher(bool dir) {
 		Node *tmp = debut;
 		do {
 			cout << tmp->data;
-			tmp = tmp->suivant;
-		} while (tmp != debut);
-	} else {
-		Node *tmp = debut;
-		do {
-			cout << tmp->data;
 			tmp = tmp->precedent;
 		} while (tmp != debut);
+	} else {
+		Node *tmp = debut->suivant;
+		do {
+			cout << tmp->data;
+			tmp = tmp->suivant;
+		} while (tmp != debut->suivant);
 	}
 	cout << endl;
 }
-void ListeDoublementChainee::ajouterData(char Data) { this->debut->data = Data; }
+void ListeDoublementChainee::ajouterData(int Data) { this->debut->data = Data; }
 void ListeDoublementChainee::ajouterPrecedent(Node* Precedent) { this->debut->precedent = Precedent; }
 void ListeDoublementChainee::ajouterSuivant(Node* Suivant) { this->debut->suivant = Suivant; }
-void ListeDoublementChainee::insertNodeApres(char d) {
+void ListeDoublementChainee::insertNodeApres(int d) {
 	Node *s = debut->suivant;
 	Node *p = debut;
 	Node *temp = new Node(d, p, s);
 	taille++;
 }
-void ListeDoublementChainee::insertNodeAvant(char d) {
+void ListeDoublementChainee::insertNodeAvant(int d) {
 	Node *s = debut;
 	Node *p = debut->precedent;
 	Node *temp = new Node(d, p, s);
 	taille++;
 }
-void ListeDoublementChainee::supprimerData(char Cherche, bool all) {	// si vrai, il supprime tous les noeuds comprenant la recherche
+void ListeDoublementChainee::supprimerData(int Cherche, bool all) {	// si vrai, il supprime tous les noeuds comprenant la recherche
 	Node *tmp = debut;													// si faux, il supprime uniquement le premier noeud
 
 	while (tmp) {
