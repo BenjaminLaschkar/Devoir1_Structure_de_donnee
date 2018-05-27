@@ -1,5 +1,7 @@
 #include "Dictionnaire.h"
 
+#include <iostream>
+
 Dictionnaire & Dictionnaire::ajouterMot(std::string const & mot)
 {
 	if (mot.length() == 1)
@@ -77,12 +79,39 @@ Dictionnaire & Dictionnaire::ajouterMot(std::string const & mot)
 	return *this; //Quand toutes les opérations sont finies, on peut renvoyer l'arbre modifié
 }
 
+void Dictionnaire::afficher() const
+{
+	std::string tampon = "";
+	afficher(tampon);
+}
+
+void Dictionnaire::afficher(std::string& tampon) const
+{
+	if(!estVide())
+	{
+		tampon += lettre;
+
+		if (endOfWord)
+			std::cout << tampon << std::endl;
+
+		if (suite != nullptr)
+			suite->afficher(tampon);
+
+		tampon.pop_back();
+
+		if (alternative != nullptr)
+			alternative->afficher(tampon);
+	}
+}
+
 bool Dictionnaire::chercherMot(std::string const & mot) const
 {
-	if (estVide() || mot.length() < 1)
+	if (estVide() || mot.empty())
 		return false;
+
 	else if(mot.length() == 1)
 		return (alternative != nullptr) ? mot[0] == lettre && endOfWord || alternative->chercherMot(mot) : mot[0] == lettre && endOfWord;
+
 	else
 	{
 		if (mot[0] == lettre && suite != nullptr)
@@ -94,7 +123,6 @@ bool Dictionnaire::chercherMot(std::string const & mot) const
 		else
 			return false;
 	}
-
 }
 
 bool Dictionnaire::estVide() const

@@ -20,7 +20,7 @@ public:
 	Dictionnaire& enleverMot(std::string const& mot);
 
 	//Affiche le contenu du dictionnaire dans l'ordre lexicographique
-	Dictionnaire& afficher() const;
+	void afficher() const;
 
 	//Recherche la présence du mot passer en paramètre dans le dictionnaire
 	//Renvoie vrai si le mot existe, faux sinon
@@ -29,6 +29,8 @@ public:
 	bool estVide() const;
 
 private:
+	void afficher(std::string & tampon) const;
+
 	char lettre = 0;
 	bool endOfWord = false;
 	std::unique_ptr<Dictionnaire> suite = nullptr;
