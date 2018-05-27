@@ -14,9 +14,7 @@ File<typename T>::File(int max = 100) throw (bad_alloc) {
 }
 
 template <typename T>
-File<typename T>::~File() {
-	delete[] tab;
-}
+File<typename T>::~File() { delete[] tab; }
 
 template<typename T>
 void File<T>::enfiler(const T &e) {
@@ -24,8 +22,7 @@ void File<T>::enfiler(const T &e) {
 		tab[queue] = e;
 		queue = (queue + 1) % tailleMax;
 		cpt++;
-	} else
-		throw length_error("Enfiler : la file est pleine!");
+	}
 }
 
 template <typename T>
@@ -35,7 +32,8 @@ T File<T> ::defiler() {
 		tete = (tete + 1) % tailleMax; //permet de « boucler » si on dépasse
 		cpt--;
 		return elementaDefiler;
-	} else
+	}
+	else
 		throw logic_error("Defiler: la file est vide!");
 }
 
@@ -43,10 +41,10 @@ template<typename T>
 int File<T>::taille() const { return cpt; }
 
 template<typename T>
-bool File<T>::estVide() const { return cpt == 0; }
+bool File<T>::estVide() const { return cpt==0; }
 
 template<typename T>
-bool File<T>::estPleine() const { return cpt == tailleMax; }
+bool File<T>::estPleine() const { return cpt==tailleMax; }
 
 template<typename T>
 const T & File<T>::premier() const {}

@@ -1,9 +1,7 @@
 #include "stdafx.h"
 #include "Axe.h"
 
-Axe::Axe() {
-	setEstTraiter(false);
-}
+Axe::Axe() { setEstTraiter(false); }
 Axe::~Axe() {}
 
 bool Axe::estAxe()  const { return true; }

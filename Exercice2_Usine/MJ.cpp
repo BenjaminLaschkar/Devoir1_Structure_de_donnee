@@ -8,10 +8,10 @@ using namespace std;
 MJ::MJ() {}
 MJ::~MJ() {}
 
-bool MJ::TraiterPiece(Axe &a) { return false; }
+bool MJ::TraiterPiece(Axe &a)  { return false; }
 bool MJ::TraiterPiece(Jupe &j) {
-	cout << "Jupe : Debut de traitement d'une Jupe. \n";
-	if (j.getEstTraiter() == true) { return true; }	// La piece est deja traitée
+	cout << "Debut de traitement d'une Jupe." << endl;
+	if (j.getEstTraiter() == true) { return true; } // La piece est deja traitee
 
 	// Temps d'attente (en seconde)
 	double tpsAttente = 3;
@@ -19,16 +19,15 @@ bool MJ::TraiterPiece(Jupe &j) {
 	// 25% de chance de tomber en panne
 	int randValue = Utilities::getRandValue(1, 100);
 	if (randValue >= 0 && randValue < 25) {
-		cout << "       Machine MJ en panne...\n";
+		cout << "Machine MJ en panne." << endl;
 		tpsAttente = tpsAttente + Utilities::getRandValue(5, 10);
 	}
 	Sleep(tpsAttente * 1000);
 
-	// Usinage de la pièce
+	// Traitement de la pièce
 	j.setEstTraiter(true);
-	cout << "       Fin de traitement.\n";
-
+	cout << "Fin de traitement d'une Jupe. \n" << endl;
 	return true;
 }
 bool MJ::TraiterPiece(Tete &t) { return false; }
-Piston * MJ::TraiterPiece(Axe &a, Jupe &j, Tete &t) { return nullptr; }
+Piston * MJ::TraiterPiece(Tete &t, Jupe &j, Axe &a) { return nullptr; }

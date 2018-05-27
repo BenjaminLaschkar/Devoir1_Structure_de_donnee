@@ -1,9 +1,7 @@
 #include "stdafx.h"
 #include "Tete.h"
 
-Tete::Tete() {
-	setEstTraiter(false);
-}
+Tete::Tete() { 	setEstTraiter(false); }
 Tete::~Tete() {}
 
 bool Tete::estAxe()  const { return false; }

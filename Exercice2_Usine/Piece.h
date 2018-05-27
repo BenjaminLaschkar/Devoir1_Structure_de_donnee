@@ -4,10 +4,10 @@ class Piece {
 	public:
 		Piece();
 		~Piece();
-
+		
 		bool getEstTraiter();
 		void setEstTraiter(bool newValue);
-
+		
 		virtual bool estAxe() const = 0;
 		virtual bool estJupe() const = 0;
 		virtual bool estTete() const = 0;

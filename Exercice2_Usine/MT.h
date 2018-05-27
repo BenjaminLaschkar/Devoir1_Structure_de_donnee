@@ -7,10 +7,10 @@ class MT : public Machine {
 		MT();
 		~MT();
 
-		bool TraiterPiece(Axe &a) override;
+		bool TraiterPiece(Axe &a)  override;
 		bool TraiterPiece(Jupe &j) override;
 		bool TraiterPiece(Tete &t) override;
-		Piston* TraiterPiece(Axe &a, Jupe &j, Tete &t) override;
+		Piston* TraiterPiece(Tete &t, Jupe &j, Axe &a) override;
 		using Machine::TraiterPiece;
 };
 

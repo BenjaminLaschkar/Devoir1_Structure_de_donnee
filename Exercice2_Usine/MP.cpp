@@ -8,29 +8,29 @@ using namespace std;
 MP::MP() {}
 MP::~MP() {}
 
-bool MP::TraiterPiece(Axe &a) { return false; }
+bool MP::TraiterPiece(Axe &a)  { return false; }
 bool MP::TraiterPiece(Jupe &j) { return false; }
 bool MP::TraiterPiece(Tete &t) { return false; }
-Piston* MP::TraiterPiece(Axe &a, Jupe &j, Tete &t) {
-	// Condition de création
-	if (a.getEstTraiter() == true || j.getEstTraiter() == true || t.getEstTraiter() == true) {
-		cout << "Piston : Debut du traitement\n";
-		Piston* p = new Piston();
+Piston* MP::TraiterPiece(Tete &t, Jupe &j, Axe &a) {
+	cout << "Debut du traitement d'un piston." << endl;
+	Piston* p = new Piston();
 
-		// Temps d'attente (en minute)
-		double tpsAttente = 1;
+	// Toutes les pieces doivent être traitees
+	if (t.getEstTraiter() == false || j.getEstTraiter() == false || a.getEstTraiter() == false) { return p; }
 
-		// 25% de chance de tomber en panne
-		if (Utilities::getRandValue(0, 100) >= 0 && Utilities::getRandValue(0, 100) < 25) {
-			cout << "         Machine MP en panne...\n";
-			tpsAttente = tpsAttente + Utilities::getRandValue(5, 10);
-		}
-		Sleep(tpsAttente * 1000);
+	// Temps d'attente (en minute)
+	double tpsAttente = 1;
 
-		// Usinage de la pièce
-		p->setEstTraiter(true);
-		cout << "         Fin du traitement d'un Piston.\n";
-
-		return p;
+	//25% de chance de tomber en panne
+	int rand = Utilities::getRandValue(1, 100);
+	if ( rand >= 0 && rand < 25) {
+		tpsAttente = tpsAttente + Utilities::getRandValue(5, 10);
+		cout << "Machine MP en panne, Patientez !" << endl;
 	}
+	Sleep(tpsAttente * 1000);
+
+	// Traitement de la pièce
+	p->setEstTraiter(true);
+	cout << "Fin du traitement d'un Piston." << endl;
+	return p;
 }

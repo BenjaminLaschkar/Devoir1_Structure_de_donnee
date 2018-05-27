@@ -10,5 +10,5 @@ class Jupe : public Piece {
 		virtual bool estJupe() const;
 		virtual bool estTete() const;
 		virtual bool estPiston() const;
-	};
+};
 
