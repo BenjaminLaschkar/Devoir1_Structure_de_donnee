@@ -3,17 +3,22 @@
 #include "Utilities.h";
 #include "Windows.h";
 #include <iostream>;
-
 using namespace std;
+MT::MT()
+{
+}
 
-MT::MT() {}
-MT::~MT() {}
+MT::~MT()
+{
+}
 
-bool MT::TraiterPiece(Axe &a)  { return false; }
-bool MT::TraiterPiece(Jupe &j) { return false; }
-bool MT::TraiterPiece(Tete &t) {
+bool MT::TraiterPiece(Tete &t)
+{
 	cout << "\nDebut de traitement d'une Tete. \n";
-	if (t.getEstTraiter() == true) { return true; }	//La piece est deja traitée
+	if (t.getEstTraiter() == true) {
+		//La piece est deja traitée
+		return true;
+	}
 
 	//TODO: 1 - Temps d'attente (en seconde)
 	double tpsAttente = 2;
@@ -23,13 +28,30 @@ bool MT::TraiterPiece(Tete &t) {
 	if (randValue >= 0 && randValue < 25) {
 		cout << "Machine MT en panne. \n";
 		tpsAttente = tpsAttente + Utilities::getRandValue(5, 10);
-	}
-	Sleep(tpsAttente * 1000);
+	 }
+	Sleep(tpsAttente*1000);
 
-	//TODO: 3- Traitement de la pièce
+	//3 - Traitement de la pièce
 	t.setEstTraiter(true);
-	cout << "\nFin de traitement d'une Tete. \n";
 	
+
+	//TODO: 3 - 
+	cout << "\nFin de traitement d'une Tete. \n";
 	return true;
 }
-Piston * MT::TraiterPiece(Tete &t, Jupe &j, Axe &a) { return nullptr; }
+
+bool MT::TraiterPiece(Axe & a)
+{
+	return false;
+}
+
+bool MT::TraiterPiece(Jupe & j)
+{
+	return false;
+}
+
+Piston * MT::TraiterPiece(Tete & t, Jupe & j, Axe & a)
+{
+	return nullptr;
+}
+

@@ -3,18 +3,36 @@
 #include "Utilities.h";
 #include "Windows.h";
 #include <iostream>;
-
 using namespace std;
 
-MJ::MJ() {}
-MJ::~MJ() {}
 
-bool MJ::TraiterPiece(Axe &a)  { return false; }
-bool MJ::TraiterPiece(Jupe &j) {
+MJ::MJ()
+{
+}
+
+
+MJ::~MJ()
+{
+}
+
+bool MJ::TraiterPiece(Tete & t)
+{
+	return false;
+}
+
+bool MJ::TraiterPiece(Axe & a)
+{
+	return false;
+}
+
+bool MJ::TraiterPiece(Jupe &j)
+{
 	cout << "Debut de traitement d'une Jupe. \n";
-	if (j.getEstTraiter() == true) { return true; }	//La piece est deja traitée
-
-	//TODO: 1- Temps d'attente (en seconde)
+	if (j.getEstTraiter() == true) {
+		//La piece est deja traitée
+		return true;
+	}
+	//TODO: 1 - Temps d'attente (en seconde)
 	double tpsAttente = 3;
 
 	//TODO: 2- Calculer temps suplémentaire en vérifiant si un nombre aléatoire entre 0 et 10 est compri entre 0 et 25 (25% de chance de tomber en panne)
@@ -25,11 +43,13 @@ bool MJ::TraiterPiece(Jupe &j) {
 	}
 	Sleep(tpsAttente * 1000);
 
-	//TODO: 3-  Traitement de la pièce
+	//TODO: 3 -  Traitement de la pièce
 	j.setEstTraiter(true);
 	cout << "Fin de traitement d'une Jupe. \n";
-	
 	return true;
 }
-bool MJ::TraiterPiece(Tete &t) { return false; }
-Piston * MJ::TraiterPiece(Tete &t, Jupe &j, Axe &a) { return nullptr; }
+
+Piston * MJ::TraiterPiece(Tete & t, Jupe & j, Axe & a)
+{
+	return nullptr;
+}
