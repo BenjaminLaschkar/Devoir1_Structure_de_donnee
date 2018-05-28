@@ -83,6 +83,6 @@ string Utilities::conversionTemps(time_t hour){
 	secondes = temps;
 	
 	stringstream stringStream;
-	stringStream << Utilities::getDifferenceHour(hour) <<  jours << " jours : " << heures << " Heures : " << minutes << " Minutes: " << secondes << " Secondes" << endl;
+	stringStream << Utilities::getDifferenceHour(hour) << " ==> " << jours << " jours : " << heures << " Heures : " << minutes << " Minutes: " << secondes << " Secondes" << endl;
 	return stringStream.str();
 }
