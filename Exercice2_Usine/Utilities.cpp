@@ -17,7 +17,7 @@ Utilities::Utilities() {}
 Utilities::~Utilities() {}
 
 int Utilities::getRandValue(int inf, int sup) {
-	int randValue = inf + (std::rand() % (sup - inf + 1)); //(rand() % sup) + inf;
+	int randValue = (rand() % sup) + inf;
 	return randValue;
 }
 
