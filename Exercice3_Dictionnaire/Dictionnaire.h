@@ -14,10 +14,10 @@ public:
 	//       Dictionnaire dico = {"motUn","motDeux","motTrois","motQuatre"...};
 
 	//Ajoute le mot au dictionnaire.
-	Dictionnaire& ajouterMot(std::string const& mot);
+	Dictionnaire & ajouterMot(std::string const& mot);
 
 	//Supprime le mot donné du dictionnaire
-	Dictionnaire& enleverMot(std::string const& mot);
+	Dictionnaire & enleverMot(std::string const& mot);
 
 	//Affiche le contenu du dictionnaire dans l'ordre lexicographique
 	void afficher() const;
