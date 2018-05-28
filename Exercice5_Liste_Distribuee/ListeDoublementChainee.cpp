@@ -4,8 +4,8 @@
 
 using namespace std;
 
-ListeDoublementChainee::ListeDoublementChainee(int d) {
-	debut = new Node(d, NULL, NULL);
+ListeDoublementChainee::ListeDoublementChainee(int i) {
+	debut = new Node(i, NULL, NULL);
 	debut->suivant = debut->precedent = debut;
 	taille = 1;
 }
@@ -23,12 +23,12 @@ ListeDoublementChainee::~ListeDoublementChainee() {
 }
 
 bool ListeDoublementChainee::estVide() { return (this->taille == 0); }
-bool ListeDoublementChainee::rechercheData(int cherche) {
+bool ListeDoublementChainee::rechercheID(int cherche) {
 	int compteur = 0;
 	Node *tmp = debut;
 
 	while (tmp->suivant != debut) {
-		if (tmp->data == cherche) compteur++;
+		if (tmp->ID == cherche) compteur++;
 		tmp = tmp->suivant;
 	}
 
@@ -44,38 +44,38 @@ void ListeDoublementChainee::afficher(bool dir) {
 	if (dir) {
 		Node *tmp = debut;
 		do {
-			cout << tmp->data;
+			cout << tmp->ID;
 			tmp = tmp->precedent;
 		} while (tmp != debut);
 	} else {
 		Node *tmp = debut->suivant;
 		do {
-			cout << tmp->data;
+			cout << tmp->ID;
 			tmp = tmp->suivant;
 		} while (tmp != debut->suivant);
 	}
 	cout << endl;
 }
-void ListeDoublementChainee::ajouterData(int Data) { this->debut->data = Data; }
+void ListeDoublementChainee::ajouterID(int ID) { this->debut->ID = ID; }
 void ListeDoublementChainee::ajouterPrecedent(Node* Precedent) { this->debut->precedent = Precedent; }
 void ListeDoublementChainee::ajouterSuivant(Node* Suivant) { this->debut->suivant = Suivant; }
-void ListeDoublementChainee::insertNodeApres(int d) {
+void ListeDoublementChainee::insertNodeApres(int i) {
 	Node *s = debut->suivant;
 	Node *p = debut;
-	Node *temp = new Node(d, p, s);
+	Node *temp = new Node(i, p, s);
 	taille++;
 }
-void ListeDoublementChainee::insertNodeAvant(int d) {
+void ListeDoublementChainee::insertNodeAvant(int i) {
 	Node *s = debut;
 	Node *p = debut->precedent;
-	Node *temp = new Node(d, p, s);
+	Node *temp = new Node(i, p, s);
 	taille++;
 }
-void ListeDoublementChainee::supprimerData(int Cherche, bool all) {	// si vrai, il supprime tous les noeuds comprenant la recherche
+void ListeDoublementChainee::supprimerID(int Cherche, bool all) {	// si vrai, il supprime tous les noeuds comprenant la recherche
 	Node *tmp = debut;													// si faux, il supprime uniquement le premier noeud
 
 	while (tmp) {
-		if (tmp->data == Cherche) {
+		if (tmp->ID == Cherche) {
 			cout << "Suppression " << Cherche << endl;
 			tmp->precedent->suivant = tmp->suivant;
 			tmp->suivant->precedent = tmp->precedent;
