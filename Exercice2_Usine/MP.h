@@ -1,6 +1,5 @@
-#pragma once
-
 #include "Machine.h"
+#pragma once
 
 class MP : public Machine {
 	public:

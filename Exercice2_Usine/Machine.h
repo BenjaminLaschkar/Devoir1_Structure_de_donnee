@@ -1,15 +1,14 @@
-#pragma once
-
 #include "Axe.h";
 #include "Jupe.h";
-#include "Piston.h";
 #include "Tete.h";
+#include "Piston.h";
+#pragma once
 
 class Machine {
 	public:
 		Machine();
 		~Machine();
-	
+
 		virtual bool TraiterPiece(Axe &a) = 0;
 		virtual bool TraiterPiece(Jupe &j) = 0;
 		virtual bool TraiterPiece(Tete &t) = 0;

@@ -1,7 +1,6 @@
-#pragma once
-
-#include "Machine.h"
 #include "Jupe.h"
+#include "Machine.h"
+#pragma once
 
 class MJ : public Machine {
 	public:

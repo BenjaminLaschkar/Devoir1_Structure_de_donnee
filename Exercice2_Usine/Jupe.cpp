@@ -1,10 +1,7 @@
 #include "stdafx.h"
 #include "Jupe.h"
 
-Jupe::Jupe() {
-	setEstTraiter(false);
-}
-
+Jupe::Jupe() { setEstTraiter(false); }
 Jupe::~Jupe() {}
 
 bool Jupe::estAxe()  const { return false; }

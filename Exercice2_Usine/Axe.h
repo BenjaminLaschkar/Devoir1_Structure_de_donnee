@@ -1,6 +1,5 @@
-#pragma once
-
 #include "Piece.h"
+#pragma once
 
 class Axe : public Piece {
 	public:

@@ -1,7 +1,5 @@
+#include <iostream>
 #pragma once
-
-#include <iostream>  
-
 using namespace std;
 
 template <typename T>
@@ -10,10 +8,10 @@ class File {
 		File(int max = 100) throw (bad_alloc);
 		~File();
 		File(const File <T> &f);
-	
+		
 		void enfiler(const T &e);
 		T defiler();
-	
+		
 		int taille() const;
 		bool estVide() const;
 		bool estPleine() const;
